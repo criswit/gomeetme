@@ -1,4 +1,4 @@
-package main
+package manufacture
 
 import (
 	"fmt"
@@ -6,11 +6,11 @@ import (
 	"time"
 )
 
-func main() {
+func makeTimeSlice() {
 	var v [5]int
 	rand.Seed(time.Now().UnixNano())
 	for i:=0; i<5; i++ {
-		v[i] = rand.Intn(24)
+		v[i] = rand.Intn(100)
 	}
 	fmt.Println(v) // [0 28 27 62 63]
 }
