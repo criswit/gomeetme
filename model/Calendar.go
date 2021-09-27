@@ -1,5 +1,11 @@
 package model
 
+import (
+	"gomeetme/timeconverters"
+	"math"
+	"time"
+)
+
 type Calendar struct {
 	Meetings []Meeting `json:"meetings"`
 }
@@ -11,4 +17,28 @@ type Calendar struct {
 //TODO: handle scenarios where a meeting is incorrectly passed in with greater than two entries
 type Meeting struct {
 	Meeting []string `json:"meeting"`
+}
+
+type MeetingTime struct {
+	TimeOfDay string `json:"time_of_day"`
+}
+
+func NewCalendar(meetings []Meeting) Calendar {
+	return Calendar{Meetings: meetings}
+}
+
+func NewMeeting(meeting []string) Meeting {
+	return Meeting{Meeting: meeting}
+}
+
+func NewMeetingStart(startTime string) MeetingTime {
+	return MeetingTime{TimeOfDay: startTime}
+}
+
+func (m MeetingTime) CreateMeeting(duration time.Duration) Meeting {
+	meetingSeconds := timeconverters.ConvertTimeToSecond(m.TimeOfDay)
+	durationSeconds := int(math.Round(duration.Seconds()))
+	endMeeting := timeconverters.FormatTime(meetingSeconds+durationSeconds)
+	return Meeting{Meeting: []string{m.TimeOfDay, endMeeting}}
+
 }

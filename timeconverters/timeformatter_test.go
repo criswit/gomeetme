@@ -27,6 +27,11 @@ func TestFormatTime(t *testing.T) {
 			input: 3600,
 			time:  "01:00:00",
 		},
+		{
+			name: "e",
+			input: 41401,
+			time: "01",
+		},
 	}
 	for _, tt := range tests {
 		got := FormatTime(tt.input)
