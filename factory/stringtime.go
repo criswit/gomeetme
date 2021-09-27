@@ -1,14 +1,13 @@
 package factory
 
 import (
-	"fmt"
 	"gomeetme/timeconverters"
 	"math/rand"
 	"time"
 )
 
 func GenerateRandomTime() string {
-	return fmt.Sprintf("%s:%s:%s", generateHours(), generateMinutes(), generateSeconds())
+	return generateHours() + ":" + generateMinutes() + ":" + generateSeconds()
 }
 
 func generateHours() string {
