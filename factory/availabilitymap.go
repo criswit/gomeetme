@@ -1,4 +1,4 @@
-package calendar
+package factory
 
 // CreateAvailabilityMap returns a map for each second in a 24 hour period,
 // with an associated boolean value representing if at least one of the calendars
@@ -11,4 +11,5 @@ func CreateAvailabilityMap() map[int]bool {
 	}
 	return availabilityMap
 }
+
 

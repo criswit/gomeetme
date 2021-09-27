@@ -1,4 +1,5 @@
-package calendar
+package factory
+
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -15,3 +16,4 @@ func TestCreateAvailabilityMap(t *testing.T) {
 
 	assert.Equal(t, i, 86400)
 }
+

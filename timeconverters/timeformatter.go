@@ -1,4 +1,4 @@
-package christime
+package timeconverters
 
 import (
 	"fmt"
@@ -8,11 +8,9 @@ import (
 const secondsInHour = 3600
 const secondsInMinute = 60
 
-// 11:43:00
-// 01:00:00
 func FormatTime(in int) string {
 	hours, minutes, seconds := parseIntervals(in)
-	return fmt.Sprintf("%s:%s:%s", addLeading0(int(hours)), addLeading0(int(minutes)), addLeading0(int(seconds)))
+	return fmt.Sprintf("%s:%s:%s", AddLeading0(int(hours)), AddLeading0(int(minutes)), AddLeading0(int(seconds)))
 
 }
 
@@ -26,7 +24,7 @@ func parseIntervals(in int) (int64, int64, int64) {
 	return hours, minutes, seconds
 }
 
-func addLeading0(in int) string {
+func AddLeading0(in int) string {
 	init := strconv.Itoa(in)
 	if len(init) == 1 {
 		return fmt.Sprintf("0%s", init)

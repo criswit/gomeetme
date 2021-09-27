@@ -1,4 +1,4 @@
-package christime
+package timeconverters
 
 import (
 	"log"
@@ -9,12 +9,15 @@ import (
 type TimeInterval string
 
 const (
-	Hour TimeInterval = "hour"
+	Hour   TimeInterval = "hour"
 	Minute TimeInterval = "minute"
 	Second TimeInterval = "second"
 )
 
-// ConvertTimeToSecond will take an input string formatted like HH::MMM:SS and convert it to a second
+// ConvertTimeToSecond is a function which converts a stringified representation of the time into its corresponding second value.
+// This function expects the input string to be of the format HH::MM::SS, as well as being in military time. The program will panic if the
+// hour is provided in an incorrect format, and we will fix this
+// TODO: throw a more friendly error when we encounter an incorrectly formated input string instead of just panicing
 func ConvertTimeToSecond(in string) int {
 	split := strings.Split(in, ":")
 	hours, mins, secs := parseSplit(split)
@@ -34,9 +37,9 @@ func inputToSecond(in string, timeInterval TimeInterval) int {
 	}
 	switch timeInterval {
 	case Hour:
-		return time*60*60
+		return time * 60 * 60
 	case Minute:
-		return time*60
+		return time * 60
 	case Second:
 		return time
 	default:

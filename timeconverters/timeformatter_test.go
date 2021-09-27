@@ -1,30 +1,31 @@
-package christime
+package timeconverters
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestFormatTime(t *testing.T) {
-	tests := []struct{
-		name string
+	tests := []struct {
+		name  string
 		input int
-		time string
+		time  string
 	}{
 		{
-			name: "minimal",
+			name:  "minimal",
 			input: 3665,
-			time: "01:01:05",
+			time:  "01:01:05",
 		},
 		{
-			name: "military",
+			name:  "military",
 			input: 72615,
-			time: "20:10:15",
+			time:  "20:10:15",
 		},
 		{
-			name: "dad",
+			name:  "dad",
 			input: 3600,
-			time: "01:00:00",
+			time:  "01:00:00",
 		},
 	}
 	for _, tt := range tests {
